@@ -20,10 +20,9 @@ const nextConfig = {
   poweredByHeader: false,
   swcMinify: true,
   webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname),
-    }
+    const alias = config.resolve.alias || {}
+    alias['@'] = path.resolve(__dirname)
+    config.resolve.alias = alias
     return config
   },
 }
